@@ -1,17 +1,20 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:file:~/test
     driver-class-name: org.h2.Driver
-    username: ad
-    password: ad
+    username: sa
+    password:
   h2:
     console:
       enabled: true
       path: /h2-console
   jpa:
-    database-platform: h2
+    database-platform: org.hibernate.dialect.H2Dialect
     generate-ddl: true
     show-sql: true
   liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.yaml
+    change-log: classpath:db1/changelog/db.changelog-master.yaml
+    url: jdbc:h2:file:~/test
     enabled: true
+server:
+    port: 9000
